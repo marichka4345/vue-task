@@ -7,6 +7,14 @@ export default new Vuex.Store({
   state: {
     notes: []
   },
+  getters: {
+    archievedNotes: state => {
+      return state.notes.filter(note => note.archieved);
+    },
+    activeNotes: state => {
+      return state.notes.filter(note => !note.archieved);
+    }
+  },
   mutations: {
     load(state, list) {
       state.notes = [...list];
@@ -22,6 +30,32 @@ export default new Vuex.Store({
       });
       state.notes = [
         ...state.notes.slice(0, elementIndex),
+        ...state.notes.slice(elementIndex + 1)
+      ];
+    },
+    archieve(state, id) {
+      let elementIndex;
+      const oldNote = state.notes.find((note, index) => {
+        elementIndex = index;
+        return note.id === id;
+      });
+      const newNote = {...oldNote, archieved: true};
+      state.notes = [
+        ...state.notes.slice(0, elementIndex),
+          newNote,
+        ...state.notes.slice(elementIndex + 1)
+      ];
+    },
+    rearchieve(state, id) {
+      let elementIndex;
+      const oldNote = state.notes.find((note, index) => {
+        elementIndex = index;
+        return note.id === id;
+      });
+      const newNote = {...oldNote, archieved: false};
+      state.notes = [
+        ...state.notes.slice(0, elementIndex),
+        newNote,
         ...state.notes.slice(elementIndex + 1)
       ];
     }

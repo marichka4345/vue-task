@@ -2,7 +2,7 @@
   <div :class="{
         'note': true,
         'note_inactive': isDone}">
-    <div class="action-panel" v-if="!isNew && !isEdited">
+    <div class="action-panel" v-if="!isNew && !isArchieved">
       <span>
         <input 
           type="checkbox"
@@ -14,10 +14,10 @@
       <font-awesome-icon :icon="iconClose" @click="$emit('delete', noteItem.id)"/>
     </div>
 
-    <input class="title" placeholder="Title" v-model="noteItem.title" :disabled="!isEdited" />
-    <textarea class="body" placeholder="Take a note..." v-model="noteItem.body" :disabled="!isEdited" />
+    <input class="title" placeholder="Title" v-model="noteItem.title" :disabled="!isNew" />
+    <textarea class="body" placeholder="Take a note..." v-model="noteItem.body" :disabled="!isNew" />
 
-    <div class="action-panel" v-if="isNew && isEdited">
+    <div class="action-panel" v-if="isNew && !isArchieved">
       <div class="add-button">
         <font-awesome-icon
           :icon="iconAdd"
@@ -30,12 +30,16 @@
       </div>
     </div>
 
-    <div class="action-panel" v-if="!isNew && !isEdited">
+    <div class="action-panel" v-if="!isNew && !isArchieved">
       <router-link :to="`/edit/${noteItem.id}`">
-        <font-awesome-icon
-          :icon="iconEdit"
-          @click="editNote"/>
+        <font-awesome-icon :icon="iconEdit"/>
       </router-link>
+
+      <font-awesome-icon :icon="iconArchieve" @click="archieveNote" />
+    </div>
+
+    <div class="action-panel" v-if="isArchieved">
+      <font-awesome-icon :icon="iconRearchieve" @click="rearchieveNote"/>
     </div>
   </div>
 </template>
@@ -47,6 +51,8 @@ import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
+import faFolder from '@fortawesome/fontawesome-free-solid/faFolder';
+import faUndo from '@fortawesome/fontawesome-free-solid/faUndo';
 
 export default {
   name: 'Note',
@@ -60,9 +66,9 @@ export default {
       isAddTitleVisible: false
     };
   },
-  props: ['item', 'isNew', 'isEdited'],
+  props: ['item', 'mode'],
   methods: {
-    markAsDone(event) {
+    markAsDone() {
       this.isDone = !this.isDone;
     },
     saveNote() {
@@ -71,8 +77,11 @@ export default {
       }
       this.$emit('save', this.noteItem);
     },
-    editNote() {
-      this.$emit('edit', this.noteItem);
+    archieveNote() {
+      this.$store.commit('archieve', this.noteItem.id);
+    },
+    rearchieveNote() {
+      this.$store.commit('rearchieve', this.noteItem.id);
     },
     showTitle() {
       this.isAddTitleVisible = true;
@@ -85,6 +94,12 @@ export default {
     noteItem() {
       return this.item;
     },
+    isNew() {
+      return this.mode === 'NEW';
+    },
+    isArchieved() {
+      return this.mode === 'ARCHIEVE';
+    },
     iconCheck() {
       return faCheck;
     },
@@ -96,6 +111,12 @@ export default {
     },
     iconEdit() {
       return faEdit;
+    },
+    iconArchieve() {
+      return faFolder;
+    },
+    iconRearchieve() {
+      return faUndo;
     }
   }
 }

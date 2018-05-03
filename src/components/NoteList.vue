@@ -6,8 +6,7 @@
         v-for="item in list" 
         :key="item.id" 
         :item="item" 
-        @delete="deleteNote"
-        @edit="editNote" />
+        @delete="deleteNote" />
     </div>
   </div>
 </template>
@@ -26,17 +25,7 @@ export default {
   methods: {
     deleteNote(id) {
       this.$emit('delete', id);
-    },
-    editNote(note) {
-      
     }
   }
 }
 </script>
-
-<style scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-</style>

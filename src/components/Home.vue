@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="home">
     <div class="top-container">
-      <Note :item="emptyItem" isNew="true" isEdited="true" @save="saveNote"/>
+      <Note :item="emptyItem" mode="NEW" @save="saveNote"/>
       <SearchForm @search="searchNote"/>
     </div>
     
     <NoteList :list="list" @delete="deleteNote" />
+
+    <NavigateMenu />
   </div>
 </template>
 
@@ -15,13 +17,15 @@ import * as uuidv1 from 'uuid/v1';
 import SearchForm from './SearchForm';
 import Note from './Note';
 import NoteList from './NoteList';
+import NavigateMenu from './NavigateMenu';
 
 export default {
   name: 'app',
   components: {
     SearchForm,
     NoteList,
-    Note
+    Note,
+    NavigateMenu
   },
   data: function() {
     return {
@@ -39,14 +43,14 @@ export default {
         this.$store.commit('load', data);
         return;
       }
-      this.list = this.$store.state.notes;
+      this.list = this.$store.getters.activeNotes;
     } catch (error) {
       console.error(error);
     }
   },
   watch: {
-    actualNotes(newVal) {
-      this.list = newVal;
+    actualNotes() {
+      this.list = this.$store.getters.activeNotes;
     }
   },
   methods: {
@@ -77,21 +81,18 @@ export default {
 </script>
 
 <style>
-.top-container {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
+  .home {
+    height: 600px;
+  }
 
-.add-new-btn {
-  border: 0;
-  border-radius: 28px;
-  color: #736c73;
-  font-size: 20px;
-  background: #eff7fc;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  outline: none;
-  cursor: pointer;
-}
+  .top-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 </style>
