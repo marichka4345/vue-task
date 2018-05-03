@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Note from './Note';
+import Note from './Note'
 
 export default {
   name: 'EditNote',
@@ -25,9 +25,9 @@ export default {
     Note
   },
   computed: {
-    note() {
-      const id = this.$route.params.id;
-      return this.$store.state.notes.find(note => String(note.id) === id);
+    note () {
+      const id = this.$route.params.id
+      return this.$store.state.notes.find(note => String(note.id) === id)
     }
   }
 }

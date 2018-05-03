@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Home from './components/Home';
+import Home from './components/Home'
 
 export default {
   name: 'app',
@@ -30,13 +30,26 @@ textarea {
   border: 0;
 }
 
+textarea {
+  resize: none;
+}
+
 input:focus,
 textarea:focus {
   outline: none;
   border: 0;
 }
 
-textarea {
-  resize: none;
+input[disabled],
+textarea[disabled] {
+  background: white;
+}
+
+.action-panel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
 }
 </style>

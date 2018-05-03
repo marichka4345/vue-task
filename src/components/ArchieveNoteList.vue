@@ -13,19 +13,19 @@
 </template>
 
 <script>
-	import Note from './Note';
+	import Note from './Note'
 
-  export default {
-    name: 'ArchievedNoteList',
-		components: {
-      Note
-		},
-		computed: {
-      list() {
-        return this.$store.getters.archievedNotes;
-			}
-		}
-  }
+export default {
+  name: 'ArchievedNoteList',
+	  components: {
+    Note
+	  },
+	  computed: {
+    list () {
+      return this.$store.getters.archievedNotes
+	    }
+	  }
+}
 </script>
 
 <style scoped>

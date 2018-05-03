@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 
 export default {
   name: 'SearchForm',
@@ -15,13 +15,13 @@ export default {
     FontAwesomeIcon
   },
   methods: {
-    searchNote() {
-      this.$emit('search', this.$refs.searchString.value);
+    searchNote () {
+      this.$emit('search', this.$refs.searchString.value)
     }
   },
   computed: {
-    iconSearch() {
-      return faSearch;
+    iconSearch () {
+      return faSearch
     }
   }
 }

@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from '../components/Home';
-import EditNote from '../components/EditNote';
-import ArchievedNoteList from '../components/ArchieveNoteList';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from '../components/Home'
+import EditNote from '../components/EditNote'
+import ArchievedNoteList from '../components/ArchieveNoteList'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [

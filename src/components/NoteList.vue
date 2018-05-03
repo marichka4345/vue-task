@@ -5,14 +5,14 @@
       <Note 
         v-for="item in list" 
         :key="item.id" 
-        :item="item" 
-        @delete="deleteNote" />
+        :item="item"
+        mode="COMMON" />
     </div>
   </div>
 </template>
 
 <script>
-import Note from './Note';
+import Note from './Note'
 
 export default {
   name: 'NoteList',
@@ -21,11 +21,6 @@ export default {
   },
   props: [
     'list'
-  ],
-  methods: {
-    deleteNote(id) {
-      this.$emit('delete', id);
-    }
-  }
+  ]
 }
 </script>
