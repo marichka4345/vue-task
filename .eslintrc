@@ -11,6 +11,7 @@
     ],
   
     "rules": {
-      "flowtype-errors/show-errors": 2
+      "flowtype-errors/show-errors": 2,
+      "indent": ["error", "tab"]
     }
   }

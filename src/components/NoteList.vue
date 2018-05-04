@@ -1,3 +1,5 @@
+// @flow
+
 <template>
   <div class="note-list">
     <h1>My Notes</h1>
@@ -12,22 +14,21 @@
 </template>
 
 <script>
-// @flow
-import { INote, NoteMode } from '../shared/types'
-import Note from './Note'
+import { NoteMode } from '../shared/types'
+import Note from './Note/Note'
 
 export default {
-  name: 'NoteList',
-  components: {
-    Note
-  },
-  props: {
-    list: INote
-  },
-  data(): { noteMode: NoteMode } {
-    return {
-      noteMode: 'COMMON'
-    }
-  }
+	name: 'NoteList',
+	components: {
+		Note
+	},
+	props: [
+		'list'
+	],
+	data (): { noteMode: NoteMode } {
+		return {
+			noteMode: 'COMMON'
+		}
+	}
 }
 </script>

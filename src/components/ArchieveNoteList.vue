@@ -1,3 +1,5 @@
+// @flow
+
 <template>
 	<div class="archieved-note-list">
 		<h2>Archieved Notes</h2>
@@ -13,25 +15,24 @@
 </template>
 
 <script>
-// @flow
 import { INote, NoteMode } from '../shared/types'
-import Note from './Note'
+import Note from './Note/Note'
 
 export default {
-  name: 'ArchievedNoteList',
-	  components: {
-    	Note
-	  },
-		data(): { noteMode: NoteMode } {
-			return {
-				noteMode: 'ARCHIEVE'
-			}
-		},
-	  computed: {
-			list (): INote[] {
-				return this.$store.getters.archievedNotes
-			}
-	  }
+	name: 'ArchievedNoteList',
+	components: {
+		Note
+	},
+	data (): { noteMode: NoteMode } {
+		return {
+			noteMode: 'ARCHIEVE'
+		}
+	},
+	computed: {
+		list (): INote[] {
+			return this.$store.getters.archievedNotes
+		}
+	}
 }
 </script>
 

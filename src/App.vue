@@ -8,10 +8,10 @@
 import Home from './components/Home'
 
 export default {
-  name: 'app',
-  components: {
-    Home
-  }
+	name: 'app',
+	components: {
+		Home
+	}
 }
 </script>
 

@@ -1,3 +1,5 @@
+// @flow
+
 <template>
   <div class="action-panel">
 		<span>
@@ -13,27 +15,26 @@
 </template>
 
 <script>
-// @flow
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import {
-  faTimes
+	faTimes
 } from '@fortawesome/fontawesome-free-solid'
 
-import { INote } from '../shared/types'
+import { INote } from '../../shared/types'
 
 export default {
-  name: 'TopActionPanel',
-  components: {
-    FontAwesomeIcon
-  },
-  props: {
-    noteItem: INote
-  },
-  computed: {
-    closeIcon () {
-      return faTimes
-    }
-  }
+	name: 'TopActionPanel',
+	components: {
+		FontAwesomeIcon
+	},
+	props: {
+		noteItem: INote
+	},
+	computed: {
+		closeIcon () {
+			return faTimes
+		}
+	}
 }
 </script>
 

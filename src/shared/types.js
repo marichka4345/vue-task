@@ -1,6 +1,4 @@
-// @flow
-
-export type NoteMode = 'NEW' | 'ARCHIEVED' | 'COMMON'
+export type NoteMode = 'NEW' | 'ARCHIEVE' | 'COMMON'
 
 export interface INote {
     id: number;

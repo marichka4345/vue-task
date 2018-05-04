@@ -1,3 +1,5 @@
+// @flow
+
 <template>
   <div :class="{
         'note': true,
@@ -13,44 +15,43 @@
 </template>
 
 <script>
-// @flow
-import { INote, NoteMode } from '../shared/types'
-import EditNote from './EditNote'
+import { INote, NoteMode } from '../../shared/types'
+import EditNote from '../EditNote'
 import TopActionPanel from './TopActionPanel'
 import BottomActionPanel from './BottomActionPanel'
 
 export default {
-  name: 'Note',
-  components: {
-    EditNote,
-    TopActionPanel,
-    BottomActionPanel
-  },
-  data () {
-    return {
-      isDone: false
-    }
-  },
-  props: {
-    item: INote,
-    mode: NoteMode
-  },
-  methods: {
-    markAsDone () {
-      this.isDone = !this.isDone
-    }
-  },
-  computed: {
-    noteItem (): INote {
-      return this.item
-    },
-    isCommon (): boolean {
-      return this.mode === 'COMMON'
-    },
-    isNew (): boolean {
-      return this.mode === 'NEW'
-    }
-  }
+	name: 'Note',
+	components: {
+		EditNote,
+		TopActionPanel,
+		BottomActionPanel
+	},
+	props: {
+		item: INote,
+		mode: NoteMode
+	},
+	data () {
+		return {
+			isDone: false
+		}
+	},
+	methods: {
+		markAsDone () {
+			this.isDone = !this.isDone
+		}
+	},
+	computed: {
+		noteItem (): INote {
+			return this.item
+		},
+		isCommon (): boolean {
+			return this.mode === 'COMMON'
+		},
+		isNew (): boolean {
+			return this.mode === 'NEW'
+		}
+	}
 }
 </script>
 
@@ -64,7 +65,7 @@ export default {
   margin-top: 25px;
   padding: 10px;
   margin-left: 25px;
-  box-shadow: 2px 4px 28px 0px rgba(158,149,158,0.43);
+  box-shadow: 2px 4px 28px 0 rgba(158,149,158,0.43);
 }
 
 .note_inactive {

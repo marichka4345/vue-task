@@ -7,16 +7,16 @@ import ArchievedNoteList from '../components/ArchieveNoteList'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      component: Home
-    }, {
-      path: '/edit/:id',
-      component: EditNote
-    }, {
-      path: '/notes/archieved',
-      component: ArchievedNoteList
-    }
-  ]
+	routes: [
+		{
+			path: '/',
+			component: Home
+		}, {
+			path: '/edit/:id',
+			component: EditNote
+		}, {
+			path: '/notes/archieved',
+			component: ArchievedNoteList
+		}
+	]
 })

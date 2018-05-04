@@ -1,3 +1,5 @@
+// @flow
+
 <template>
   <div class="edit-note">
     <h2>Edit note</h2>
@@ -17,21 +19,20 @@
 </template>
 
 <script>
-// @flow
 import { INote } from '../shared/types'
-import Note from './Note'
+import Note from './Note/Note'
 
 export default {
-  name: 'EditNote',
-  components: {
-    Note
-  },
-  computed: {
-    note (): INote {
-      const id = this.$route.params.id
-      return this.$store.state.notes.find(note => String(note.id) === id)
-    }
-  }
+	name: 'EditNote',
+	components: {
+		Note
+	},
+	computed: {
+		note (): INote {
+			const id = this.$route.params.id
+			return this.$store.state.notes.find(note => String(note.id) === id)
+		}
+	}
 }
 </script>
 

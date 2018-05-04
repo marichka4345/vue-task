@@ -10,20 +10,20 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 
 export default {
-  name: 'SearchForm',
-  components: {
-    FontAwesomeIcon
-  },
-  methods: {
-    searchNote () {
-      this.$emit('search', this.$refs.searchString.value)
-    }
-  },
-  computed: {
-    iconSearch () {
-      return faSearch
-    }
-  }
+	name: 'SearchForm',
+	components: {
+		FontAwesomeIcon
+	},
+	methods: {
+		searchNote () {
+			this.$emit('search', this.$refs.searchString.value)
+		}
+	},
+	computed: {
+		iconSearch () {
+			return faSearch
+		}
+	}
 }
 </script>
 
