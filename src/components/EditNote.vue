@@ -17,6 +17,8 @@
 </template>
 
 <script>
+// @flow
+import { INote } from '../shared/types'
 import Note from './Note'
 
 export default {
@@ -25,7 +27,7 @@ export default {
     Note
   },
   computed: {
-    note () {
+    note (): INote {
       const id = this.$route.params.id
       return this.$store.state.notes.find(note => String(note.id) === id)
     }
@@ -34,6 +36,7 @@ export default {
 </script>
 
 <style scoped>
+
 input,
 textarea {
   font-size: 20px;
@@ -62,4 +65,5 @@ textarea {
   padding: 10px 30px;
   cursor: pointer;
 }
+
 </style>

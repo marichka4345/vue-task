@@ -13,6 +13,7 @@
 </template>
 
 <script>
+// @flow
 import { INote, NoteMode } from '../shared/types'
 import EditNote from './EditNote'
 import TopActionPanel from './TopActionPanel'
@@ -40,13 +41,13 @@ export default {
     }
   },
   computed: {
-    noteItem () {
+    noteItem (): INote {
       return this.item
     },
-    isCommon () {
+    isCommon (): boolean {
       return this.mode === 'COMMON'
     },
-    isNew () {
+    isNew (): boolean {
       return this.mode === 'NEW'
     }
   }

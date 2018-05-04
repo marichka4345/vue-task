@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style scoped>
+
 .search-form {
   width: 30%;
 }
@@ -45,4 +46,5 @@ export default {
 .search-icon {
   cursor: pointer;
 }
+
 </style>

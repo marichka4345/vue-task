@@ -6,12 +6,14 @@
         v-for="item in list" 
         :key="item.id" 
         :item="item"
-        mode="COMMON" />
+        :mode="noteMode" />
     </div>
   </div>
 </template>
 
 <script>
+// @flow
+import { INote, NoteMode } from '../shared/types'
 import Note from './Note'
 
 export default {
@@ -19,8 +21,13 @@ export default {
   components: {
     Note
   },
-  props: [
-    'list'
-  ]
+  props: {
+    list: INote
+  },
+  data(): { noteMode: NoteMode } {
+    return {
+      noteMode: 'COMMON'
+    }
+  }
 }
 </script>

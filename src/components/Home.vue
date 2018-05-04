@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="top-container">
-      <Note :item="noteItem" mode="NEW" @save="saveNote"/>
+      <Note :item="noteItem" :mode="noteMode" @save="saveNote"/>
       <SearchForm @search="searchNote"/>
     </div>
     
@@ -11,10 +11,11 @@
 </template>
 
 <script>
+// @flow
 import * as uuidv1 from 'uuid/v1'
 import axios from 'axios'
 
-import { INote } from '../shared/types'
+import { INote, NoteMode } from '../shared/types'
 
 import SearchForm from './SearchForm'
 import Note from './Note'
@@ -34,10 +35,11 @@ export default {
     Note,
     NavigateMenu
   },
-  data: function (): { list: INote[], noteItem: INote } {
+  data: function (): { list: INote[], noteItem: INote, noteMode: NoteMode } {
     return {
       list: [],
-      noteItem: { ...emptyItem }
+      noteItem: { ...emptyItem },
+      noteMode: 'NEW'
     }
   },
   async created () {
@@ -79,6 +81,7 @@ export default {
 </script>
 
 <style>
+
   .home {
     height: 600px;
   }
@@ -93,4 +96,5 @@ export default {
     display: flex;
     flex-wrap: wrap;
   }
+
 </style>

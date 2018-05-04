@@ -7,23 +7,30 @@
 						v-for="item in list"
 						:key="item.id"
 						:item="item"
-						mode="ARCHIEVE" />
+						:mode="noteMode" />
 		</div>
 	</div>
 </template>
 
 <script>
-	import Note from './Note'
+// @flow
+import { INote, NoteMode } from '../shared/types'
+import Note from './Note'
 
 export default {
   name: 'ArchievedNoteList',
 	  components: {
-    Note
+    	Note
 	  },
+		data(): { noteMode: NoteMode } {
+			return {
+				noteMode: 'ARCHIEVE'
+			}
+		},
 	  computed: {
-    list () {
-      return this.$store.getters.archievedNotes
-	    }
+			list (): INote[] {
+				return this.$store.getters.archievedNotes
+			}
 	  }
 }
 </script>

@@ -29,25 +29,28 @@
 </template>
 
 <script>
+// @flow
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import {
   faPlus, faEdit,
   faFolder, faUndo
 } from '@fortawesome/fontawesome-free-solid'
 
+import { INote, NoteMode } from '../shared/types'
+
 export default {
   name: 'BottomActionPanel',
   components: {
     FontAwesomeIcon
   },
-  props: ['noteItem', 'mode'],
-  data () {
+  props: {
+    noteItem: INote, 
+    mode: NoteMode
+  },
+  data (): { isAddTitleVisible: boolean } {
     return {
       isAddTitleVisible: false
     }
-  },
-  created () {
-    console.log(this.mode)
   },
   methods: {
     saveNote () {
@@ -61,10 +64,10 @@ export default {
     }
   },
   computed: {
-    isNew () {
+    isNew (): boolean {
       return this.mode === 'NEW'
     },
-    isCommon () {
+    isCommon (): boolean {
       return this.mode === 'COMMON'
     },
     icons () {

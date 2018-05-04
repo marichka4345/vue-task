@@ -13,17 +13,22 @@
 </template>
 
 <script>
+// @flow
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import {
   faTimes
 } from '@fortawesome/fontawesome-free-solid'
+
+import { INote } from '../shared/types'
 
 export default {
   name: 'TopActionPanel',
   components: {
     FontAwesomeIcon
   },
-  props: ['noteItem'],
+  props: {
+    noteItem: INote
+  },
   computed: {
     closeIcon () {
       return faTimes
